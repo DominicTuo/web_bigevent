@@ -12,11 +12,11 @@ $.ajaxPrefilter(function(option){
     }
     //在全局挂载complete回调函数
     option.complete = function(res){
-        console.log(res);
-        //强制清空token
-        localStorage.removeItem('token');
+        // console.log(res);
         //判断responseJson并强制返回到登录页面
         if(res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！'){
+            //强制清空token
+            localStorage.removeItem('token');
             location.href = '/login.html';
         }
     }
